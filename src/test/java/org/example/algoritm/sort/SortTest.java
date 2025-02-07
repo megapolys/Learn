@@ -16,6 +16,7 @@ class SortTest {
 	private final InsertionSort insertionSort = new InsertionSort();
 	private final SelectionSort selectionSort = new SelectionSort();
 	private final HeapSort heapSort = new HeapSort();
+	private final MergeSort mergeSort = new MergeSort();
 
 	private static Stream<Arguments> testSource() {
 		return Stream.of(
@@ -73,6 +74,17 @@ class SortTest {
 		Arrays.sort(expected);
 
 		int[] actual = heapSort.sort(array);
+
+		assertArrayEquals(expected, actual);
+	}
+
+	@ParameterizedTest
+	@MethodSource(value = "testSource")
+	void mergeSort(int[] array) {
+		int[] expected = Arrays.copyOf(array, array.length);
+		Arrays.sort(expected);
+
+		int[] actual = mergeSort.sort(array);
 
 		assertArrayEquals(expected, actual);
 	}
