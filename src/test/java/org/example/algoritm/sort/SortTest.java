@@ -31,7 +31,8 @@ class SortTest {
 			Arguments.of((Object) new int[]{5, 4, 2, 2, 3}),
 			Arguments.of((Object) new int[]{1, 3, 5, 2, 1}),
 			Arguments.of((Object) new int[]{10, 9, 8, 7, 6, 6, 5, 4, 3, 2, 1}),
-			Arguments.of((Object) new int[]{1, 2, 3, 4, 5, 6, 1, 6, 7, 8, 5})
+			Arguments.of((Object) new int[]{1, 2, 3, 4, 5, 6, 1, 6, 7, 8, 5}),
+			Arguments.of((Object) new int[]{3, 7, 8, 5, 2, 1, 9, 5, 4})
 		);
 	}
 

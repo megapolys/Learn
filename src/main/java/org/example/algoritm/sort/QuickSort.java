@@ -1,5 +1,7 @@
 package org.example.algoritm.sort;
 
+import java.util.Arrays;
+
 /**
  * Быстрая сортировка. Сложность O(n log n).
  */
@@ -7,7 +9,10 @@ public class QuickSort implements Sort {
 
 	@Override
 	public int[] sort(int[] array) {
-		return sort(array, array.length);
+		System.out.println(Arrays.toString(array));
+//		return sort(array, array.length);
+		quickSort(array, 0, array.length - 1);
+		return array;
 	}
 
 	private int[] sort(int[] array, int len) {
@@ -50,5 +55,45 @@ public class QuickSort implements Sort {
 			}
 		}
 		return sortArray;
+	}
+
+	private void quickSort(int[] arr, int low, int high) {
+		if (low < high) {
+			int pivotIndex = partition(arr, low, high);
+			quickSort(arr, low, pivotIndex - 1);
+			quickSort(arr, pivotIndex + 1, high);
+		}
+	}
+
+	private int partition(int[] arr, int low, int high) {
+		int pivot = arr[low];
+		System.out.printf("pivot = %d, low = %d, high = %d%n", pivot, low, high);
+		int left = low + 1;
+		int right = high;
+		while (true) {
+			while (left <= right && arr[left] <= pivot) {
+				left++;
+			}
+			while (right >= left && arr[right] >= pivot) {
+				right--;
+			}
+			if (right < left) {
+				break;
+			} else {
+				int temp = arr[left];
+				arr[left] = arr[right];
+				arr[right] = temp;
+				if (left != right) {
+					System.out.println(Arrays.toString(arr));
+				}
+			}
+		}
+		int temp = arr[low];
+		arr[low] = arr[right];
+		arr[right] = temp;
+		if (low != right) {
+			System.out.println(Arrays.toString(arr));
+		}
+		return right;
 	}
 }
